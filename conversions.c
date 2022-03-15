@@ -36,6 +36,12 @@ printable char2str(va_list ap)
 	ch = va_arg(ap, int);
 
 	str_char = malloc(sizeof(char));
+	if (str_char == NULL)
+	{
+		result.len = 0;
+		result.str = NULL;
+		return (result);
+	}
 	str_char[0] = ch;
 
 	result.str = str_char;
