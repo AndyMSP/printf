@@ -151,7 +151,19 @@ printable int2str(va_list ap, char garb)
 
 	/*allocate space for new storage arrays*/
 	str_int = malloc(sizeof(int) * len);
+	if (str_int == NULL)
+	{
+		result.len = 0;
+		result.str = NULL;
+		return (result);
+	}
 	str_char = malloc(sizeof(char) * len);
+	if (str_char == NULL)
+	{
+		result.len = 0;
+		result.str = NULL;
+		return (result);
+	}
 
 	/*extract digits and store in str_int array*/
 	buf = num;
@@ -166,6 +178,8 @@ printable int2str(va_list ap, char garb)
 	{
 		str_char[i] = '0' + str_int[i];
 	}
+
+	free(str_int);
 
 	result.str = str_char;
 
