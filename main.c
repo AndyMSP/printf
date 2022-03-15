@@ -4,8 +4,9 @@ int main()
 {
 	int _len, len;
 
-	_len = _printf("String:[%s]\n", "I am a string !");
-	len = printf("String:[%s]\n", "I am a string !");
+	len = printf("Unknown:[%r]\n");
+	_len = _printf("Unknown:[%r]\n");
+	len = printf("Unknown:[%r]\n");
 
 	printf("TEST END LINE: _len = %i, len = %i\n", _len, len);
 

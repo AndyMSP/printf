@@ -73,6 +73,12 @@ printable str2str(va_list ap)
 	}
 
 	result.str = malloc(len * sizeof(char));
+	if (result.str == NULL)
+	{
+		result.len = 0;
+		result.str = NULL;
+		return (result);
+	}
 
 	for (i = 0; i < len; i++)
 		result.str[i] = str_char[i];
@@ -96,6 +102,13 @@ printable mod2str(va_list ap)
 	(void)ap;
 
 	result.str = malloc(sizeof(char));
+	if (result.str == NULL)
+	{
+		result.len = 0;
+		result.str = NULL;
+		return (result);
+	}
+
 	result.str[0] = '%';
 	result.len = 1;
 
