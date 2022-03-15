@@ -1,11 +1,12 @@
 #include "main.h"
+#include <limits.h>
 
 int main()
 {
 	int _len, len;
 
-	_len = _printf("123 = %i\n", 123);
-	len = printf("123 = %i\n", 123);
+	_len = _printf("%d\n", INT_MIN);
+	len = printf("%d\n", INT_MIN);
 
 	printf("TEST END LINE: _len = %i, len = %i\n", _len, len);
 

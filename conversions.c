@@ -8,9 +8,9 @@
  *
  * Return: integer result
  */
-int _pow(int base, int exp)
+long int _pow(long int base, long int exp)
 {
-	int result = 1;
+	long int result = 1;
 
 	while (exp != 0)
 	{
@@ -130,7 +130,7 @@ printable mod2str(va_list ap, char garb)
 
 printable int2str(va_list ap, char garb)
 {
-	int i, j, len, *str_int, neg;
+	long int i, j, len, *str_int, neg;
 	long int num, buf;
 	char *str_char;
 	printable result;
@@ -139,11 +139,15 @@ printable int2str(va_list ap, char garb)
 
 	num = va_arg(ap, int);
 
+	printf("\n\n%i\n\n", num);
+
 	if (num < 0)
 	{
 		num = num * -10;
 		neg = 1;
 	}
+
+	printf("\n\n%li\n\n", num);
 
 	/*find number of digits len*/
 	buf = num;

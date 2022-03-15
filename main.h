@@ -21,7 +21,7 @@ typedef struct conversions
 } con_type;
 
 int _printf(const char *format, ...);
-int _pow(int base, int exp);
+long int _pow(long int base, long int exp);
 printable char2str(va_list, char);
 printable int2str(va_list, char);
 printable str2str(va_list, char);
