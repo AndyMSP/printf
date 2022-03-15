@@ -7,7 +7,7 @@
  *
  * Return: pointer to function that returns struct of type printable
  */
-printable(*get_op(char ch))(va_list, char)
+printable (*get_op(char ch))(va_list, char)
 {
 	unsigned int i = 0;
 	con_type picker[] = {
@@ -15,13 +15,15 @@ printable(*get_op(char ch))(va_list, char)
 		{'s', str2str},
 		{'d', int2str},
 		{'i', int2str},
-		{'%', mod2str},
+		{'%', mod2str}
 	};
 
 	while (i < sizeof(picker) / sizeof(picker[0]))
 	{
 		if (ch == picker[i].spec)
+		{
 			return (picker[i].f);
+		}
 		i++;
 	}
 
@@ -50,11 +52,13 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 
 	i = 0;
-	while (format[i] != 0)
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
 			i++;
+			while (format[i] == ' ')
+				i++;
 			convert = get_op(format[i]);
 			buffer = convert(ap, format[i]);
 			write(1, buffer.str, buffer.len);
