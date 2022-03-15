@@ -138,6 +138,20 @@ printable int2str(va_list ap, char garb)
 	(void)garb;
 
 	num = va_arg(ap, int);
+	
+	if (num == 0)
+	{
+		result.str = malloc(sizeof(char));
+		if (result.str == NULL)
+		{
+			result.str = NULL;
+			result.len = 0;
+		}
+		result.str[0] = '0';
+		result.len = 1;
+
+		return (result);
+	}
 
 	if (num < 0)
 	{
