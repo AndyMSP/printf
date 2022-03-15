@@ -42,6 +42,7 @@ printable (*get_op(char ch))(va_list, char)
 int _printf(const char *format, ...)
 {
 	int i, len = 0;
+	char new_line = ' ';
 	va_list ap;
 	printable buffer;
 	printable (*convert)(va_list, char);
@@ -58,7 +59,10 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			while (format[i] == ' ')
+			{
+				write(1, &new_line, 1);
 				i++;
+			}
 			convert = get_op(format[i]);
 			buffer = convert(ap, format[i]);
 			write(1, buffer.str, buffer.len);
