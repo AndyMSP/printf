@@ -64,6 +64,8 @@ int _printf(const char *format, ...)
 				len++;
 				i++;
 			}
+			if (format[i] == '\0')
+				return (len);
 			convert = get_op(format[i]);
 			buffer = convert(ap, format[i]);
 			write(1, buffer.str, buffer.len);
