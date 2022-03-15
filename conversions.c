@@ -130,14 +130,20 @@ printable mod2str(va_list ap, char garb)
 
 printable int2str(va_list ap, char garb)
 {
-	int num, i, len, *str_int;
-	int buf;
+	int i, j, len, *str_int, neg;
+	long int num, buf;
 	char *str_char;
 	printable result;
 
 	(void)garb;
 
 	num = va_arg(ap, int);
+
+	if (num < 0)
+	{
+		num = num * -10;
+		neg = 1;
+	}
 
 	/*find number of digits len*/
 	buf = num;
@@ -150,7 +156,7 @@ printable int2str(va_list ap, char garb)
 	len = i;
 
 	/*allocate space for new storage arrays*/
-	str_int = malloc(sizeof(int) * len);
+	str_int = malloc(sizeof(long int) * len);
 	if (str_int == NULL)
 	{
 		result.len = 0;
@@ -174,9 +180,20 @@ printable int2str(va_list ap, char garb)
 	}
 
 	/*convert int array to char array*/
-	for (i = 0; i < len; i++)
+	if (neg == 1)
 	{
-		str_char[i] = '0' + str_int[i];
+		str_char[0] = '-';
+		i = 1;
+	}
+	else
+	{
+		i = 0;
+	}
+
+	for (j = 0; i < len; j++)
+	{
+		str_char[i] = '0' + str_int[j];
+		i++;
 	}
 
 	free(str_int);
