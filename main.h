@@ -16,16 +16,16 @@ typedef struct str_and_len
 typedef struct conversions
 {
 	char spec;
-	printable (*f)(va_list);
+	printable (*f)(va_list, char);
 
 } con_type;
 
 int _printf(const char *format, ...);
 int _pow(int base, int exp);
-printable char2str(va_list ap);
-printable int2str(va_list ap);
-printable str2str(va_list ap);
-printable mod2str(va_list ap);
-printable mis2str(va_list ap);
+printable char2str(va_list, char);
+printable int2str(va_list, char);
+printable str2str(va_list, char);
+printable mod2str(va_list, char);
+printable mis2str(va_list, char);
 
 #endif

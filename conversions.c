@@ -27,11 +27,13 @@ int _pow(int base, int exp)
  *
  * Return: struct containing a string and its length
  */
-printable char2str(va_list ap)
+printable char2str(va_list ap, char garb)
 {
 	char ch;
 	char *str_char;
 	printable result;
+
+	(void)garb;
 
 	ch = va_arg(ap, int);
 
@@ -57,11 +59,13 @@ printable char2str(va_list ap)
  *
  * Return: structure containing a string and its length
  */
-printable str2str(va_list ap)
+printable str2str(va_list ap, char garb)
 {
 	char *str_char;
 	int len, i;
 	printable result;
+
+	(void)garb;
 
 	str_char = va_arg(ap, char *);
 
@@ -95,11 +99,12 @@ printable str2str(va_list ap)
  * Return: structure containing a string and its length
  */
 
-printable mod2str(va_list ap)
+printable mod2str(va_list ap, char garb)
 {
 	printable result;
 
 	(void)ap;
+	(void)garb;
 
 	result.str = malloc(sizeof(char));
 	if (result.str == NULL)
@@ -123,12 +128,14 @@ printable mod2str(va_list ap)
  * Return: structure containing a string and its length
  */
 
-printable int2str(va_list ap)
+printable int2str(va_list ap, char garb)
 {
 	int num, i, len, *str_int;
 	int buf;
 	char *str_char;
 	printable result;
+
+	(void)garb;
 
 	num = va_arg(ap, int);
 
@@ -174,4 +181,16 @@ printable int2str(va_list ap)
  *
  * Return: structure containing a string and its length
  */
+printable mis2str(va_list ap, char garb)
+{
+	printable result;
 
+	(void)ap;
+
+	result.str = malloc(sizeof(char) * 2);
+	result.str[0] = '%';
+	result.str[1] = garb;
+	result.len = 2;
+
+	return (result);
+}

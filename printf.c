@@ -7,7 +7,7 @@
  *
  * Return: pointer to function that returns struct of type printable
  */
-printable(*get_op(char ch))(va_list)
+printable(*get_op(char ch))(va_list, char)
 {
 	unsigned int i = 0;
 	con_type picker[] = {
@@ -25,7 +25,7 @@ printable(*get_op(char ch))(va_list)
 		i++;
 	}
 
-	return (0);
+	return (mis2str);
 }
 
 
@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 	int i, len = 0;
 	va_list ap;
 	printable buffer;
-	printable (*convert)(va_list);
+	printable (*convert)(va_list, char);
 
 	va_start(ap, format);
 
@@ -53,7 +53,7 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			convert = get_op(format[i]);
-			buffer = convert(ap);
+			buffer = convert(ap, format[i]);
 			write(1, buffer.str, buffer.len);
 			len += buffer.len;
 			free(buffer.str);
