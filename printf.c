@@ -39,7 +39,7 @@ printable(*get_op(char ch))(va_list)
 
 int _printf(const char *format, ...)
 {
-	int i;
+	int i, len = 0;
 	va_list ap;
 	printable buffer;
 	printable (*convert)(va_list);
@@ -55,15 +55,17 @@ int _printf(const char *format, ...)
 			convert = get_op(format[i]);
 			buffer = convert(ap);
 			write(1, buffer.str, buffer.len);
+			len += buffer.len;
 		}
 		else
 		{
 			write(1, &format[i], 1);
+			len++;
 		}
 	i++;
 	}
 
 	va_end(ap);
 
-	return (0);
+	return (len);
 }
