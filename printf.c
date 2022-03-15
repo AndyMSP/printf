@@ -61,6 +61,7 @@ int _printf(const char *format, ...)
 			while (format[i] == ' ')
 			{
 				write(1, &new_line, 1);
+				len++;
 				i++;
 			}
 			convert = get_op(format[i]);
