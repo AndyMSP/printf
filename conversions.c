@@ -139,15 +139,11 @@ printable int2str(va_list ap, char garb)
 
 	num = va_arg(ap, int);
 
-	printf("\n\n%i\n\n", num);
-
 	if (num < 0)
 	{
 		num = num * -10;
 		neg = 1;
 	}
-
-	printf("\n\n%li\n\n", num);
 
 	/*find number of digits len*/
 	buf = num;
