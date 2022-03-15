@@ -4,8 +4,9 @@ int main(void)
 {
 	int _len, len;
 
-	_len = _printf("test%");
-	len = _printf("test%");
+	_len = _printf("%%");
+	printf("\n");
+	len = printf("%%");
 
 	printf("TEST END LINE: _len = %i, len = %i\n", _len, len);
 
