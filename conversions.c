@@ -54,7 +54,7 @@ printable char2str(va_list ap)
 printable str2str(va_list ap)
 {
 	char *str_char;
-	int len;
+	int len, i;
 	printable result;
 
 	str_char = va_arg(ap, char *);
@@ -67,7 +67,10 @@ printable str2str(va_list ap)
 	}
 
 	result.str = malloc(len * sizeof(char));
-	result.str = str_char;
+
+	for (i = 0; i < len; i++)
+		result.str[i] = str_char[i];
+
 	result.len = len;
 
 	return (result);

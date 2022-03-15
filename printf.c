@@ -56,6 +56,7 @@ int _printf(const char *format, ...)
 			buffer = convert(ap);
 			write(1, buffer.str, buffer.len);
 			len += buffer.len;
+			free(buffer.str);
 		}
 		else
 		{
