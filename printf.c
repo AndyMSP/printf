@@ -44,6 +44,9 @@ int _printf(const char *format, ...)
 	printable buffer;
 	printable (*convert)(va_list, char);
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(ap, format);
 
 	i = 0;
