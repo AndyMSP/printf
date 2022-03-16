@@ -51,11 +51,11 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(ap, format);
-	if (format == NULL)
+/*	if (format == NULL)
 	{
 		return(-1);
 	}
-
+*/
 	i = 0;
 	while (format[i] != '\0')
 	{
